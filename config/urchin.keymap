@@ -115,9 +115,9 @@
 
         config {
             bindings = <
-    &to ALPHA      &trans    &trans    &trans    &trans               &bt BT_CLR      &bt BT_SEL 1    &out OUT_TOG    &trans    &trans
-    &sys_reset     &trans    &trans    &trans    &ext_power EP_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &trans          &trans    &sys_reset
-    &bootloader    &trans    &trans    &trans    &trans               &bt BT_SEL 1    &bt BT_SEL_4    &trans          &trans    &bootloader
+    &to ALPHA      &trans    &trans    &trans    &trans               &bt BT_CLR      &bt BT_SEL 2    &out OUT_TOG    &trans    &trans
+    &sys_reset     &trans    &trans    &trans    &ext_power EP_TOG    &bt BT_SEL 0    &bt BT_SEL 3    &trans          &trans    &sys_reset
+    &bootloader    &trans    &trans    &trans    &trans               &bt BT_SEL 1    &bt BT_SEL 4    &trans          &trans    &bootloader
                                        &trans    &trans               &trans          &trans
             >;
         };
