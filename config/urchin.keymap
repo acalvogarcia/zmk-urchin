@@ -13,7 +13,7 @@
 #define NAV 3
 
 &sk {
-  lazy
+  lazy;
 }
 
 / {
