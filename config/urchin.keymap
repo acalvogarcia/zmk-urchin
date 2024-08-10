@@ -66,8 +66,8 @@
         combo_nav {
           timeout-ms = <50>;
           key-positions = <30 33>;
-          bindings = <&tog NAV>
-        }
+          bindings = <&tog NAV>;
+        };
     };
 
     keymap {
