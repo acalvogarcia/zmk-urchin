@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2020 duckyb
- *
  * SPDX-License-Identifier: MIT
  */
 
@@ -29,6 +28,15 @@
               compatible = "zmk,behavior-mod-morph";
               label = "BKSP_AND_DEL";
               bindings = <&kp BACKSPACE>, <&kp DELETE>;
+
+              #binding-cells = <0>;
+              mods = <(MOD_LSFT|MOD_RSFT)>;
+          };
+
+          ord: ordinal {
+              compatible = "zmk,behavior-mod-morph";
+              label = "ORD";
+              bindings = <&kp ES_ORDM>, <&kp ES_ORDF>;
 
               #binding-cells = <0>;
               mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -76,10 +84,10 @@
 
         symbols {
             bindings = <
-    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-                                  &trans    &trans    &trans    &trans
+    &kp ES_EURO    &kp ES_AT        &kp ES_LT       &kp ES_GT      &kp ES_SEMI     &kp ES_COLON    &kp ES_LBRC      &kp ES_RBRC     &kp ES_PIPE     &kp ES_BSLH
+    &ord           &kp ES_HASH      &kp ES_LBKT     &kp ES_RBKT    &kp ES_SQT      &kp ES_DQT      &kp ES_LPAR      &kp ES_RPAR     &kp ES_AMPS     &kp ES_GRAVE
+    &kp ES_NOT     &kp ES_MIDDOT    &kp ES_IEXCL    &kp ES_EXCL    &kp ES_UNDER    &kp ES_DLLR     &kp ES_IQMARK    &kp ES_QMARK    &kp ES_TILDE    &kp ES_UMLAUT
+                                                    &trans         &trans          &trans          &trans
             >;
         };
 
