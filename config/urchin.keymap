@@ -9,105 +9,87 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
-// Layer definitions
-
-#define BASE 0
-#define SYM 1
-#define EXT 2
-#define FNC 3
-#define SYM2 4
-#define ACCENT 5
-#define SETTINGS 6
-
-// -----------------
-
 / {
-    c_and_cedillac_and_cedilla: behaviors {
-        // Enables holding the first mod-tap key
-        // by performing a tap-release-hold sequence.
-        // To use it: "&qt KEYCODE1 KEYCODE2"c_and_cedilla: c_and_cedilla {
 
-        compatible = "zmk,behavior-mod-morph";
-        label = "C_AND_CEDILLA";
-        bindings = <&kp ES_C>, <&kp ES_C_CEDILLA>;
+    behaviors {
+          c_and_cedillac_and_cedilla: c_and_cedillac_and_cedilla {
+              // Enables holding the first mod-tap key
+              // by performing a tap-release-hold sequence.
+              // To use it: "&qt KEYCODE1 KEYCODE2"c_and_cedilla: c_and_cedilla {
 
-        #binding-cells = <0>;
-        mods = <(MOD_LSFT|MOD_RSFT)>;
+              compatible = "zmk,behavior-mod-morph";
+              label = "C_AND_CEDILLA";
+              bindings = <&kp ES_C>, <&kp ES_C_CEDILLA>;
+
+              #binding-cells = <0>;
+              mods = <(MOD_LSFT|MOD_RSFT)>;
+          };
+
+          bksp_and_del: bksp_and_del {
+              compatible = "zmk,behavior-mod-morph";
+              label = "BKSP_AND_DEL";
+              bindings = <&kp BACKSPACE>, <&kp DELETE>;
+
+              #binding-cells = <0>;
+              mods = <(MOD_LSFT|MOD_RSFT)>;
+          };
+
+          layer_2_key: layer_2_key {
+              compatible = "zmk,behavior-hold-tap";
+              label = "LAYER_2_KEY";
+              bindings = <&mo>, <&bksp_and_del>;
+
+              #binding-cells = <2>;
+              tapping-term-ms = <200>;
+          };
+
     };
 
-    bksp_and_del: bksp_and_del {
-        compatible = "zmk,behavior-mod-morph";
-        label = "BKSP_AND_DEL";
-        bindings = <&kp BACKSPACE>, <&kp DELETE>;
-
-        #binding-cells = <0>;
-        mods = <(MOD_LSFT|MOD_RSFT)>;
+    macros {
     };
 
-    layer_2_key: layer_2_key {
-        compatible = "zmk,behavior-hold-tap";
-        label = "LAYER_2_KEY";
-        bindings = <&mo>, <&bksp_and_del>;
-
-        #binding-cells = <2>;
-        tapping-term-ms = <200>;
-    };
-};
-
-macros {
-    // sometimes my device thinks a modifier is being held down
-    // pressing all modifiers fixes it.
-};
-
-combos {
-    compatible = "zmk,combos";
-
-    // both right thumb keys
-    // internal-left & external-right thumb keys
-    // both left thumb keys
-    // left index & middle fingers (home-row)
-    // hold control & space for Adobe workflow
-};
-
-keymap {
-    compatible = "zmk,keymap";
-
-    // Base alpha layer
-    alpha {
-        bindings = <
-&kp ES_Q    &kp ES_W    &kp ES_E    &kp ES_R    &kp ES_T    &kp ES_Y    &kp ES_U    &kp ES_I        &kp ES_O      &kp ES_P
-&kp ES_A    &kp ES_S    &kp ES_D    &kp ES_F    &kp ES_G    &kp ES_H    &kp ES_J    &kp ES_K        &kp ES_L      &kp ES_N_TILDE
-&kp ES_Z    &kp ES_X    &kp ES_C    &kp ES_V    &kp ES_B    &kp ES_N    &kp ES_M    &kp ES_COMMA    &kp ES_DOT    &kp ES_ACUTE
-                              &trans    &trans    &trans    &trans
-        >;
+    combos {
+        compatible = "zmk,combos";
     };
 
-    numbers {
-        bindings = <
-&trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-&trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-&trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-                              &trans    &trans    &trans    &trans
-        >;
-    };
+    keymap {
+        compatible = "zmk,keymap";
 
-    symbols {
-        bindings = <
-&trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-&trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-&trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-                              &trans    &trans    &trans    &trans
-        >;
-    };
+        // Base alpha layer
+        alpha {
+            bindings = <
+    &kp ES_Q    &kp ES_W    &kp ES_E    &kp ES_R    &kp ES_T    &kp ES_Y    &kp ES_U    &kp ES_I        &kp ES_O      &kp ES_P
+    &kp ES_A    &kp ES_S    &kp ES_D    &kp ES_F    &kp ES_G    &kp ES_H    &kp ES_J    &kp ES_K        &kp ES_L      &kp ES_N_TILDE
+    &kp ES_Z    &kp ES_X    &kp ES_C    &kp ES_V    &kp ES_B    &kp ES_N    &kp ES_M    &kp ES_COMMA    &kp ES_DOT    &kp ES_ACUTE
+                                  &trans    &trans    &trans    &trans
+            >;
+        };
 
-    navigation {
-        bindings = <
-&trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-&trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-&trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-                              &trans    &trans    &trans    &trans
-        >;
-    };
-};
+        numbers {
+            bindings = <
+    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
+    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
+    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
+                                  &trans    &trans    &trans    &trans
+            >;
+        };
 
+        symbols {
+            bindings = <
+    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
+    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
+    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
+                                  &trans    &trans    &trans    &trans
+            >;
+        };
+
+        navigation {
+            bindings = <
+    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
+    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
+    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
+                                  &trans    &trans    &trans    &trans
+            >;
+        };
+    };
 };
