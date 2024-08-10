@@ -12,7 +12,7 @@
 / {
 
     behaviors {
-          c_and_cedillac_and_cedilla: c_and_cedillac_and_cedilla {
+          c_and_ced: c_and_cedilla {
               // Enables holding the first mod-tap key
               // by performing a tap-release-hold sequence.
               // To use it: "&qt KEYCODE1 KEYCODE2"c_and_cedilla: c_and_cedilla {
@@ -34,7 +34,7 @@
               mods = <(MOD_LSFT|MOD_RSFT)>;
           };
 
-          layer_2_key: layer_2_key {
+          lay_2: layer_2_key {
               compatible = "zmk,behavior-hold-tap";
               label = "LAYER_2_KEY";
               bindings = <&mo>, <&bksp_and_del>;
@@ -58,19 +58,19 @@
         // Base alpha layer
         alpha {
             bindings = <
-    &kp ES_Q    &kp ES_W    &kp ES_E    &kp ES_R    &kp ES_T    &kp ES_Y    &kp ES_U    &kp ES_I        &kp ES_O      &kp ES_P
-    &kp ES_A    &kp ES_S    &kp ES_D    &kp ES_F    &kp ES_G    &kp ES_H    &kp ES_J    &kp ES_K        &kp ES_L      &kp ES_N_TILDE
-    &kp ES_Z    &kp ES_X    &kp ES_C    &kp ES_V    &kp ES_B    &kp ES_N    &kp ES_M    &kp ES_COMMA    &kp ES_DOT    &kp ES_ACUTE
-                                  &trans    &trans    &trans    &trans
+    &kp ES_Q    &kp ES_W    &kp ES_E      &kp ES_R      &kp ES_T         &kp ES_Y               &kp ES_U    &kp ES_I        &kp ES_O      &kp ES_P
+    &kp ES_A    &kp ES_S    &kp ES_D      &kp ES_F      &kp ES_G         &kp ES_H               &kp ES_J    &kp ES_K        &kp ES_L      &kp ES_N_TILDE
+    &kp ES_Z    &kp ES_X    &c_and_ced    &kp ES_V      &kp ES_B         &kp ES_N               &kp ES_M    &kp ES_COMMA    &kp ES_DOT    &kp ES_ACUTE
+                                          &lay_2 2 0    &mt LCTRL RET    &mt LSHIFT ES_SPACE    &trans
             >;
         };
 
         numbers {
             bindings = <
-    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-                                  &trans    &trans    &trans    &trans
+    &trans       &trans       &kp ES_PRCNT    &kp ES_FSLH    &kp ES_MINUS    &kp ES_PLUS    &kp ES_STAR    &kp ES_EQUAL    &trans       &trans
+    &kp ES_N1    &kp ES_N2    &kp ES_N3       &kp ES_N4      &kp ES_N5       &kp ES_N6      &kp ES_N7      &kp ES_N8       &kp ES_N9    &kp ES_N0
+    &trans       &trans       &trans          &trans         &trans          &trans         &trans         &trans          &trans       &trans
+                                              &trans         &trans          &trans         &trans
             >;
         };
 
