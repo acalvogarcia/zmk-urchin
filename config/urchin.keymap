@@ -3,19 +3,23 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include "keymap_italian.h"
 #include "keys_es.h"
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+
+#define ALPHA 0
+#define NUM 1
+#define SYM 2
+#define NAV 3
+
+&sk {
+  lazy
+}
 
 / {
 
     behaviors {
           c_and_ced: c_and_cedilla {
-              // Enables holding the first mod-tap key
-              // by performing a tap-release-hold sequence.
-              // To use it: "&qt KEYCODE1 KEYCODE2"c_and_cedilla: c_and_cedilla {
-
               compatible = "zmk,behavior-mod-morph";
               label = "C_AND_CEDILLA";
               bindings = <&kp ES_C>, <&kp ES_C_CEDILLA>;
@@ -58,18 +62,23 @@
 
     combos {
         compatible = "zmk,combos";
+
+        combo_nav {
+          timeout-ms = <50>;
+          key-positions = <30 33>;
+          bindings = <&tog NAV>
+        }
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        // Base alpha layer
         alpha {
             bindings = <
-    &kp ES_Q    &kp ES_W    &kp ES_E      &kp ES_R      &kp ES_T         &kp ES_Y               &kp ES_U    &kp ES_I        &kp ES_O      &kp ES_P
-    &kp ES_A    &kp ES_S    &kp ES_D      &kp ES_F      &kp ES_G         &kp ES_H               &kp ES_J    &kp ES_K        &kp ES_L      &kp ES_N_TILDE
-    &kp ES_Z    &kp ES_X    &c_and_ced    &kp ES_V      &kp ES_B         &kp ES_N               &kp ES_M    &kp ES_COMMA    &kp ES_DOT    &kp ES_ACUTE
-                                          &lay_2 2 0    &mt LCTRL RET    &mt LSHIFT ES_SPACE    &trans
+    &kp ES_Q    &kp ES_W    &kp ES_E      &kp ES_R        &kp ES_T         &kp ES_Y               &kp ES_U    &kp ES_I        &kp ES_O      &kp ES_P
+    &kp ES_A    &kp ES_S    &kp ES_D      &kp ES_F        &kp ES_G         &kp ES_H               &kp ES_J    &kp ES_K        &kp ES_L      &kp ES_N_TILDE
+    &kp ES_Z    &kp ES_X    &c_and_ced    &kp ES_V        &kp ES_B         &kp ES_N               &kp ES_M    &kp ES_COMMA    &kp ES_DOT    &kp ES_ACUTE
+                                          &lay_2 SYM 0    &mt LCTRL RET    &mt LSHIFT ES_SPACE    &lt NAV ESC
             >;
         };
 
@@ -93,10 +102,10 @@
 
         navigation {
             bindings = <
-    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
-                                  &trans    &trans    &trans    &trans
+    &trans    &trans    &kp K_VOL_DN    &kp K_VOL_UP    &kp K_MUTE    &kp HOME    &kp PG_DN    &kp PG_UP    &kp END      &trans
+    &trans    &trans    &kp K_PREV      &kp K_NEXT      &kp K_PP      &kp LEFT    &kp DOWN     &kp UP       &kp RIGHT    &trans
+    &trans    &trans    &kp C_BRI_DN    &kp C_BRI_UP    &kp C_MENU    &trans      &trans       &trans       &trans       &trans
+                                        &trans          &trans        &trans      &trans
             >;
         };
     };
