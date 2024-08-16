@@ -85,6 +85,15 @@
               #binding-cells = <2>;
               tapping-term-ms = <200>;
           };
+
+          sm: sticky_mod {
+              compatible = "zmk,behavior-hold-tap";
+              label = "STICKY_MOD";
+              bindings = <&sk>, <&kp>;
+
+              #binding-cells = <2>;
+              tapping-term-ms = <200>;
+          }
     };
 
     macros {
@@ -132,9 +141,9 @@
 
         navigation {
             bindings = <
-    &to CONF    &trans    &kp K_VOL_DN    &kp K_VOL_UP    &kp K_MUTE    &kp HOME    &kp PG_DN    &kp PG_UP    &kp END      &trans
-    &trans      &trans    &kp K_PREV      &kp K_NEXT      &kp K_PP      &kp LEFT    &kp DOWN     &kp UP       &kp RIGHT    &trans
-    &trans      &trans    &kp C_BRI_DN    &kp C_BRI_UP    &kp C_MENU    &trans      &trans       &trans       &trans       &trans
+    &to CONF    &trans    &kp K_VOL_DN    &kp K_VOL_UP    &kp K_MUTE    &kp HOME     &kp PG_DN    &kp PG_UP    &kp END      &trans
+    &trans      &trans    &kp K_PREV      &kp K_NEXT      &kp K_PP      &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &trans
+    &trans      &trans    &kp C_BRI_DN    &kp C_BRI_UP    &kp C_MENU    &sk LCTRL    &sk LGUI     &sk LALT     &sk RALT     &trans
                                           &trans          &trans        &trans      &trans
             >;
         };
