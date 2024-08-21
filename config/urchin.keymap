@@ -22,7 +22,7 @@
 
 &lt {
   flavor = "hold-preferred";
-}
+};
 
 / {
 
