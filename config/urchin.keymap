@@ -20,6 +20,10 @@
   lazy;
 };
 
+&lt {
+  flavor = "hold-preferred";
+}
+
 / {
 
     behaviors {
