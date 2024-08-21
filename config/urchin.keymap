@@ -132,9 +132,9 @@
 
         symbols {
             bindings = <
-    &kp ES_EURO    &kp ES_AT        &kp ES_LT       &kp ES_GT      &kp ES_SEMI     &kp ES_COLON    &kp ES_LBRC      &kp ES_RBRC     &kp ES_PIPE     &kp ES_BSLH
-    &ord           &kp ES_HASH      &kp ES_LBKT     &kp ES_RBKT    &kp ES_SQT      &kp ES_DQT      &kp ES_LPAR      &kp ES_RPAR     &kp ES_AMPS     &kp ES_GRAVE
-    &kp ES_NOT     &kp ES_MIDDOT    &kp ES_IEXCL    &kp ES_EXCL    &kp ES_UNDER    &kp ES_DLLR     &kp ES_IQMARK    &kp ES_QMARK    &kp ES_TILDE    &kp ES_UMLAUT
+    &kp ES_EURO    &kp ES_AT        &kp ES_LT       &kp ES_GT      &kp ES_UNDER    &kp ES_DLLR    &kp ES_LBRC      &kp ES_RBRC     &kp ES_PIPE     &kp ES_BSLH
+    &ord           &kp ES_HASH      &kp ES_LBKT     &kp ES_RBKT    &kp ES_DQT      &kp ES_SQT     &kp ES_LPAR      &kp ES_RPAR     &kp ES_AMPS     &kp ES_GRAVE
+    &kp ES_NOT     &kp ES_MIDDOT    &kp ES_IEXCL    &kp ES_EXCL    &trans          &trans         &kp ES_IQMARK    &kp ES_QMARK    &kp ES_TILDE    &kp ES_UMLAUT
                                                     &trans         &trans          &trans          &trans
             >;
         };
@@ -143,7 +143,7 @@
             bindings = <
     &to CONF    &trans    &kp K_VOL_DN    &kp K_VOL_UP    &kp K_MUTE    &kp HOME     &kp PG_DN    &kp PG_UP    &kp END      &trans
     &trans      &trans    &kp K_PREV      &kp K_NEXT      &kp K_PP      &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &kp TAB
-    &trans      &trans    &kp C_BRI_DN    &kp C_BRI_UP    &kp C_MENU    &sk LCTRL    &sk LGUI     &sk LALT     &sk RALT     &trans
+    &trans      &trans    &kp C_BRI_DN    &kp C_BRI_UP    &kp C_MENU    &sk LCTRL    &sk LGUI     &sk LALT     &sk RALT     &sk LSHIFT
                                           &trans          &trans        &trans      &trans
             >;
         };
