@@ -105,7 +105,7 @@
 
     conditional_layers {
       compatible = "zmk,conditional-layers";
-      nav_layer = {
+      nav_layer {
         if-layers = <1 2>;
         then-layer = <3>;
       };
