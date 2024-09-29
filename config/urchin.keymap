@@ -58,6 +58,7 @@
     macros {
           pound: pound {
               compatible = "zmk,behavior-macro";
+              #binding-cells = <0>;
               bindings
                 = <&macro_press &kp LALT>
                 , <&macro_tap &kp ES_PLUS &kp ES_N0 &kp ES_N0 &kp ES_A &kp ES_N3>
@@ -67,6 +68,7 @@
 
           euro: euro {
               compatible = "zmk,behavior-macro";
+              #binding-cells = <0>;
               bindings
                 = <&macro_press &kp LALT>
                 , <&macro_tap &kp ES_PLUS &kp ES_N2 &kp ES_N0 &kp ES_A &kp ES_C>
