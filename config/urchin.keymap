@@ -97,9 +97,9 @@
 
         numbers {
             bindings = <
-    &pound       &ES_DLLR     &euro           &kp ES_MINUS    &kp ES_FSLH     &kp TAB         &kp ES_LPAR    &kp ES_RPAR     &kp ES_LT     &kp ES_GT
-    &kp ES_N1    &kp ES_N2    &kp ES_N3       &kp ES_N4       &kp ES_N5       &kp ES_N6       &kp ES_N7      &kp ES_N8       &kp ES_N9     &kp ES_N0
-    &trans       &trans       &kp ES_CARET    &kp ES_PLUS     &kp ES_PRCNT    &kp ES_EQUAL    &kp ES_STAR    &kp ES_COMMA    &kp ES_DOT    &trans
+    &pound       &kp ES_DLLR    &euro           &kp ES_MINUS    &kp ES_FSLH     &kp TAB         &kp ES_LPAR    &kp ES_RPAR     &kp ES_LT     &kp ES_GT
+    &kp ES_N1    &kp ES_N2      &kp ES_N3       &kp ES_N4       &kp ES_N5       &kp ES_N6       &kp ES_N7      &kp ES_N8       &kp ES_N9     &kp ES_N0
+    &trans       &trans         &kp ES_CARET    &kp ES_PLUS     &kp ES_PRCNT    &kp ES_EQUAL    &kp ES_STAR    &kp ES_COMMA    &kp ES_DOT    &trans
                                               &trans          &trans          &trans          &trans
             >;
         };
