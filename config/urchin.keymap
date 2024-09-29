@@ -12,8 +12,8 @@
 
 #define ALPHA 0
 #define NUM 1
-#define SYM 2
-#define NAV 3
+#define NAV 2
+#define SYM 3
 #define CONF 4
 
 &sk {
@@ -27,55 +27,10 @@
 / {
 
     behaviors {
-          c_and_ced: c_and_cedilla {
-              compatible = "zmk,behavior-mod-morph";
-              label = "C_AND_CEDILLA";
-              bindings = <&kp ES_C>, <&kp ES_C_CEDILLA>;
-
-              #binding-cells = <0>;
-              mods = <(MOD_LSFT|MOD_RSFT)>;
-          };
-
           bksp_and_del: bksp_and_del {
               compatible = "zmk,behavior-mod-morph";
               label = "BKSP_AND_DEL";
               bindings = <&kp BACKSPACE>, <&kp DELETE>;
-
-              #binding-cells = <0>;
-              mods = <(MOD_LSFT|MOD_RSFT)>;
-          };
-
-          ord: ordinal {
-              compatible = "zmk,behavior-mod-morph";
-              label = "ORD";
-              bindings = <&kp ES_ORDM>, <&kp ES_ORDF>;
-
-              #binding-cells = <0>;
-              mods = <(MOD_LSFT|MOD_RSFT)>;
-          };
-
-          x_cut: x_cut {
-              compatible = "zmk,behavior-mod-morph";
-              label = "X_CUT";
-              bindings = <&kp ES_X>, <&kp C_AC_CUT>;
-
-              #binding-cells = <0>;
-              mods = <(MOD_LCTL|MOD_RCTL)>;
-          };
-
-          c_copy: c_copy {
-              compatible = "zmk,behavior-mod-morph";
-              label = "C_COPY";
-              bindings = <&kp ES_C>, <&kp C_AC_COPY>;
-
-              #binding-cells = <0>;
-              mods = <(MOD_LCTL|MOD_RCTL)>;
-          };
-
-          v_paste: v_paste {
-              compatible = "zmk,behavior-mod-morph";
-              label = "V_PASTE";
-              bindings = <&kp ES_V>, <&kp C_AC_PASTE>;
 
               #binding-cells = <0>;
               mods = <(MOD_LCTL|MOD_RCTL)>;
@@ -90,17 +45,34 @@
               tapping-term-ms = <200>;
           };
 
-          sm: sticky_mod {
-              compatible = "zmk,behavior-hold-tap";
-              label = "STICKY_MOD";
-              bindings = <&sk>, <&kp>;
+          super: super {
+              compatible = "zmk,behavior-mod-morph";
+              label = "BKSP_AND_DEL";
+              bindings = <&sk LGUI>, <&kp LGUI>;
 
-              #binding-cells = <2>;
-              tapping-term-ms = <200>;
+              #binding-cells = <0>;
+              mods = <(MOD_LGUI)>;
           };
     };
 
     macros {
+          pound: pound {
+              compatible = "zmk,behavior-macro";
+              bindings
+                = <&macro_press &kp LALT>
+                , <&macro_tap &kp ES_PLUS &kp ES_N0 &kp ES_N0 &kp ES_A &kp ES_N3>
+                , <&macro_release &kp LALT>
+                ;
+          }
+
+          euro: euro {
+              compatible = "zmk,behavior-macro";
+              bindings
+                = <&macro_press &kp LALT>
+                , <&macro_tap &kp ES_PLUS &kp ES_N2 &kp ES_N0 &kp ES_A &kp ES_C>
+                , <&macro_release &kp LALT>
+                ;
+          }
     };
 
     conditional_layers {
@@ -116,46 +88,46 @@
 
         alpha {
             bindings = <
-    &kp ES_Q    &kp ES_W    &kp ES_E    &kp ES_R    &kp ES_T    &kp ES_Y    &kp ES_U    &kp ES_I        &kp ES_O      &kp ES_P
-    &kp ES_A    &kp ES_S    &kp ES_D    &kp ES_F    &kp ES_G    &kp ES_H    &kp ES_J    &kp ES_K        &kp ES_L      &kp ES_N_TILDE
-    &kp ES_Z    &kp ES_X    &kp ES_C    &kp ES_V    &kp ES_B    &kp ES_N    &kp ES_M    &kp ES_COMMA    &kp ES_DOT    &kp ES_ACUTE
-                                        &lay_2 SYM 0    &mt LCTRL RET    &mt LSHIFT ES_SPACE    &lt NUM ESC
+    &kp ES_Q    &kp ES_W    &kp ES_E    &kp ES_R        &kp ES_T               &kp ES_Y         &kp ES_U    &kp ES_I        &kp ES_O      &kp ES_P
+    &kp ES_A    &kp ES_S    &kp ES_D    &kp ES_F        &kp ES_G               &kp ES_H         &kp ES_J    &kp ES_K        &kp ES_L      &kp ES_N_TILDE
+    &kp ES_Z    &kp ES_X    &kp ES_C    &kp ES_V        &kp ES_B               &kp ES_N         &kp ES_M    &kp ES_COMMA    &kp ES_DOT    &kp ES_ACUTE
+                                        &lay_2 NAV 0    &mt LSHIFT ES_SPACE    &mt LCTRL RET    &lt NUM TAB
             >;
         };
 
         numbers {
             bindings = <
-    &trans       &trans       &kp ES_PRCNT    &kp ES_FSLH    &kp ES_MINUS    &kp ES_PLUS    &kp ES_STAR    &kp ES_EQUAL    &trans       &trans
-    &kp ES_N1    &kp ES_N2    &kp ES_N3       &kp ES_N4      &kp ES_N5       &kp ES_N6      &kp ES_N7      &kp ES_N8       &kp ES_N9    &kp ES_N0
-    &trans       &trans       &trans          &trans         &trans          &trans         &trans         &trans          &trans       &trans
-                                              &trans         &trans          &trans         &trans
+    &pound       &ES_DLLR     &euro           &kp ES_MINUS    &kp ES_FSLH     &kp TAB         &kp ES_LPAR    &kp ES_RPAR     &kp ES_LT     &kp ES_GT
+    &kp ES_N1    &kp ES_N2    &kp ES_N3       &kp ES_N4       &kp ES_N5       &kp ES_N6       &kp ES_N7      &kp ES_N8       &kp ES_N9     &kp ES_N0
+    &trans       &trans       &kp ES_CARET    &kp ES_PLUS     &kp ES_PRCNT    &kp ES_EQUAL    &kp ES_STAR    &kp ES_COMMA    &kp ES_DOT    &trans
+                                              &trans          &trans          &trans          &trans
             >;
         };
 
         symbols {
             bindings = <
-    &kp ES_EURO    &kp ES_AT        &kp ES_LT       &kp ES_GT      &kp ES_UNDER    &kp ES_AMPS    &kp ES_LBRC      &kp ES_RBRC     &kp ES_PIPE     &kp ES_BSLH
-    &ord           &kp ES_HASH      &kp ES_LBKT     &kp ES_RBKT    &kp ES_DQT      &kp ES_SQT     &kp ES_LPAR      &kp ES_RPAR     &kp ES_DLLR     &kp ES_GRAVE
-    &kp ES_NOT     &kp ES_MIDDOT    &kp ES_IEXCL    &kp ES_EXCL    &trans          &trans         &kp ES_IQMARK    &kp ES_QMARK    &kp ES_TILDE    &kp ES_UMLAUT
-                                                    &trans         &trans          &trans          &trans
+    &trans      &kp RA(ES_N_TILDE)    &kp ES_C_CEDILLA    &kp ES_UNDER    &kp ES_BSLH    &kp ES_ORDM    &kp ES_AT        &kp ES_AMPS    &kp ES_PIPE    &trans
+    &trans      &kp ES_NOT            &kp ES_IQMARK       &kp ES_QMARK    &kp ES_SQT     &kp ES_DQT     &kp ES_IEXCL     &kp ES_EXCL    &kp ES_HASH    &trans
+    &to CONF    &trans                &kp ES_LBKT         &kp ES_RBKT     &trans         &kp ES_ORDF    &kp ES_MIDDOT    &trans         &trans         &trans
+                                                          &trans          &trans         &trans         &trans
             >;
         };
 
         navigation {
             bindings = <
-    &to CONF    &trans    &kp K_VOL_DN    &kp K_VOL_UP    &kp K_MUTE    &kp HOME     &kp PG_DN    &kp PG_UP    &kp END      &trans
-    &trans      &trans    &kp K_PREV      &kp K_NEXT      &kp K_PP      &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &kp TAB
-    &trans      &trans    &kp C_BRI_DN    &kp C_BRI_UP    &kp C_MENU    &sk LCTRL    &sk LGUI     &sk LALT     &sk RALT     &sk LSHIFT
-                                          &trans          &trans        &trans      &trans
+    &trans    &trans    &kp K_VOL_DN    &kp K_VOL_UP    &kp K_MUTE    &kp HOME    &kp PG_DN    &kp PG_UP    &kp END      &trans
+    &trans    &trans    &kp K_PREV      &kp K_NEXT      &kp K_PP      &kp LEFT    &kp DOWN     &kp UP       &kp RIGHT    &sk LSHIFT
+    &trans    &trans    &kp C_BRI_DN    &kp C_BRI_UP    &kp C_MENU    &sk LALT    &sk LCTRL    &kp TAB      &super       &sk RALT
+                                        &trans          &trans        &trans      &trans
             >;
         };
 
         config {
             bindings = <
-    &to ALPHA      &trans    &trans    &trans    &trans               &bt BT_CLR      &bt BT_SEL 2    &out OUT_TOG    &trans    &trans
-    &sys_reset     &trans    &trans    &trans    &ext_power EP_TOG    &bt BT_SEL 0    &bt BT_SEL 3    &trans          &trans    &sys_reset
-    &bootloader    &trans    &trans    &trans    &trans               &bt BT_SEL 1    &bt BT_SEL 4    &trans          &trans    &bootloader
-                                       &trans    &trans               &trans          &trans
+    &bootloader    &trans    &trans    &trans    &trans    &bt BT_CLR      &bt BT_SEL 2    &out OUT_TOG    &trans    &bootloader
+    &sys_reset     &trans    &trans    &trans    &trans    &bt BT_SEL 0    &bt BT_SEL 3    &trans          &trans    &sys_reset
+    &to ALPHA      &trans    &trans    &trans    &trans    &bt BT_SEL 1    &bt BT_SEL 4    &trans          &trans    &trans
+                                       &trans    &trans    &trans          &trans
             >;
         };
     };
