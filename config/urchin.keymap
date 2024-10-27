@@ -98,6 +98,15 @@
               #binding-cells = <2>;
               tapping-term-ms = <200>;
           };
+
+          super: super {
+              compatible = "zmk,behavior-mod-morph";
+              label = "SUPER";
+              bindings = <&sk LGUI>, <&kp LGUI>;
+
+              #binding-cells = <0>;
+              mods = <(MOD_LGUI)>;
+          }
     };
 
     macros {
@@ -145,7 +154,7 @@
             bindings = <
     &to CONF    &trans    &kp K_VOL_DN    &kp K_VOL_UP    &kp K_MUTE    &kp HOME     &kp PG_DN    &kp PG_UP    &kp END      &trans
     &trans      &trans    &kp K_PREV      &kp K_NEXT      &kp K_PP      &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &kp TAB
-    &trans      &trans    &kp C_BRI_DN    &kp C_BRI_UP    &kp C_MENU    &sk LCTRL    &sk LGUI     &sk LALT     &sk RALT     &sk LSHIFT
+    &trans      &trans    &kp C_BRI_DN    &kp C_BRI_UP    &kp C_MENU    &sk LCTRL    &super       &sk LALT     &sk RALT     &sk LSHIFT
                                           &trans          &trans        &trans      &trans
             >;
         };
